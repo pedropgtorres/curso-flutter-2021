@@ -1,4 +1,4 @@
-class AppRoutes{
+class AppRoutes {
   static const HOME = '/';
-  static const USER_FORM = '/user-from';
+  static const LIST_FORM = '/LIST-from';
 }

@@ -12,21 +12,21 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-        ChangeNotifierProvider(
-        create: (ctx) => Users(),
-    ),
-    ],
-      child: MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-        routes: {
-          AppRoutes.HOME: (_) => UserList(),
-          AppRoutes.USER_FORM: (_) => UserForm()
-        },
-    )
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (ctx) => Users(),
+          ),
+        ],
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          routes: {
+            AppRoutes.HOME: (_) => UserList(),
+            AppRoutes.LIST_FORM: (_) => UserForm()
+          },
+        ));
   }
 }
