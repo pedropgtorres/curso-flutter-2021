@@ -4,9 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class UserForm extends StatelessWidget{
+class UserForm extends StatefulWidget{
 
+  @override
+  _UserFormState createState() => _UserFormState();
+}
+
+class _UserFormState extends State<UserForm> {
   final _form = GlobalKey<FormState>();
+
   final Map<String, Object> _formData = {};
 
   void _loadFormData(User user){
@@ -19,11 +25,15 @@ class UserForm extends StatelessWidget{
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     final User user = ModalRoute.of(context).settings.arguments;
     //carregar dados setados
     _loadFormData(user);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cadastro'),
