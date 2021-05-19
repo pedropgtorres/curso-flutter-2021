@@ -1,5 +1,6 @@
 import 'package:curso_flutter_despesas_pessoais/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  String title;
+  double value;
+
   final _transactions = [
     Transaction(
       id: 't1',
@@ -37,7 +41,6 @@ class MyHomePage extends StatelessWidget {
           title: Text('Despesas Pessoais'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
@@ -86,7 +89,7 @@ class MyHomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              tr.date.toString(),
+                              DateFormat('d MMM y').format(tr.date),
                               style: TextStyle(
                                 color: Colors.grey,
                               ),
@@ -98,6 +101,39 @@ class MyHomePage extends StatelessWidget {
                   );
                 }),
               ],
+            ),
+            Card(
+              elevation: 5,
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    TextField(
+                      onChanged: (newTitle) => title = newTitle,
+                      decoration: InputDecoration(
+                        labelText: 'Título',
+                      ),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Valor R\$',
+                      ),
+                    ),
+                    ElevatedButton(
+                      child: Text(
+                        'Nova Transação',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.purple,
+                      ),
+                    )
+                  ],
+                ),
+              ),
             )
           ],
         ));
