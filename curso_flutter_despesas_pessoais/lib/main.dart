@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components/transaction_graphic.dart';
 import 'components/transaction_user.dart';
 
 void main() {
@@ -18,22 +19,18 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Despesas Pessoais'),
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: Text('Despesas Pessoais'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Text('Gráfico'),
-                color: Colors.blue,
-                elevation: 5,
-              ),
-            ),
+            TransactionGraphic(),
             TransactionUser(),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
