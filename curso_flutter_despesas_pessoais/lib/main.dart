@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:curso_flutter_despesas_pessoais/components/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'components/transaction_graphic.dart';
@@ -15,6 +14,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+      ),
     );
   }
 }
@@ -25,8 +35,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
+  final List<Transaction> _transactions = [
+    /*Transaction(
       id: 't1',
       title: 'Novo tênis corrida',
       value: 300.76,
@@ -37,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: 'Conta de luz',
       value: 211.30,
       date: DateTime.now(),
-    ),
+    ),*/
   ];
 
   _addTransaction(String title, double value) {
@@ -51,6 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+
+    Navigator.of(context).pop();
   }
 
   _openTransactionFormModal(BuildContext context) {
@@ -91,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _openTransactionFormModal(context);
           },
         ),
+        onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

@@ -7,7 +7,7 @@ class TransactionGraphic extends StatelessWidget {
       width: double.infinity,
       child: Card(
         child: Text('Gráfico'),
-        color: Colors.blue,
+        color: Theme.of(context).primaryColor,
         elevation: 5,
       ),
     );
